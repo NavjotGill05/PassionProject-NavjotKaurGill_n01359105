@@ -1,0 +1,14 @@
+﻿@model PassionProject.Models.Product
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you sure you want to delete @Model.ProductName?</h2>
+
+<div>
+    <a href="/Product/Show/@Model.ProductId">Cancel</a>
+</div><br/>
+
+<form method="POST" action="/Product/DeleteConfirm/@Model.ProductId">
+    <div><input type="submit" value="Confirm" /></div>
+</form>

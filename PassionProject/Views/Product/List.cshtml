@@ -1,0 +1,39 @@
+﻿@model List<PassionProject.Models.Product>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Products</h2>
+<div class="navbar">
+    <a class="navlink" href="/Product/Add">Add New Product</a>
+</div>
+<form action="/Product/List" method="GET">
+    <input type="text" name="productSearchKey" id="productSearchKey" />
+    <input type="submit" value="Search" />
+</form>
+<div class="tilecontainer">
+    <br />
+    @{
+        foreach (var Product in Model)
+        {
+        <div  class="listitem">
+            <div class="itemdetails">
+                @{
+                    if (Product.HasPic == 1)
+                    {
+                        <img src="../../Content/Products/@(Product.ProductId).@(Product.PicExtension)" alt="Image of @Product.ProductName" />
+                    }
+                }
+            </div>
+            <div class="itemdetails">
+                <div class="listcat"><a href="/Product/Show/@Product.ProductId">@Product.ProductName</a></div>
+                <div class="listcat">Brand : <span>@Product.Brands.BrandName</span></div>
+                <div class="listcat">Price : <span>@Product.ProductPrice</span></div><br />
+
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        }
+    }
+    <div style="clear:both;"></div>
+</div>

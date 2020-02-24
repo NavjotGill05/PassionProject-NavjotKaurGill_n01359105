@@ -1,0 +1,28 @@
+﻿@model List<PassionProject.Models.Brand>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Brands</h2>
+
+
+
+<div>
+    <a href="/Brand/Add">Add New Brand</a>
+</div>
+<form method="GET" action="/Brand/List">
+    <input type="text" id="brandSearchKey" name="brandSearchKey" />
+    <input type="submit" value="Search" />
+</form>
+<div>
+    @{
+        foreach (var brand in @Model)
+        {
+
+            <div>
+                <a href="/Brand/Show/@brand.BrandId">@brand.BrandName</a>
+                <a href="/Brand/Update/@brand.BrandId">Update</a>
+            </div>
+        }
+    }
+</div>

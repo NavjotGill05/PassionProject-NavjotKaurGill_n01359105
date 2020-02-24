@@ -1,0 +1,15 @@
+﻿@model PassionProject.Models.Category
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you sure you want to delete @Model.CategoryName?</h2>
+
+<div>
+    <a href="/Category/Show/@Model.CategoryId">Cancel</a>
+</div>
+
+<form method="POST" action="/Category/DeleteConfirm/@Model.CategoryName">
+    <div><input type="submit" value="Confirm" /></div>
+</form>
+

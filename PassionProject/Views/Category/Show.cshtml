@@ -1,0 +1,15 @@
+﻿@model PassionProject.Models.Category
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<div>
+    <a href="/Category/List">Back to List</a>
+    <a href="/Category/Update/@Model.CategoryId">Update</a>
+    <a href="/Category/Delete/@Model.CategoryId">Delete</a>
+</div>
+<div>
+    <span>Category Name : </span>@Model.CategoryName
+</div>

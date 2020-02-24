@@ -1,0 +1,15 @@
+﻿@model PassionProject.Models.Brand
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<div>
+    <a href="/Brand/List">Back to List</a>
+    <a href="/Brand/Update/@Model.BrandId">Update</a>
+    <a href="/Brand/Delete/@Model.BrandId">Delete</a>
+</div>
+<div>
+    <span>Brand Name : </span>@Model.BrandName
+</div>

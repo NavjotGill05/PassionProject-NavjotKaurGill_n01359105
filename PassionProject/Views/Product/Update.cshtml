@@ -1,0 +1,37 @@
+﻿@model PassionProject.Models.ViewModels.UpdateProduct
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<div>
+    <a href="/Product/List">Back to List</a>
+</div>
+
+<form action="/Product/Update/@Model.Product.ProductId" method="POST" enctype="multipart/form-data">
+    <div> Image: <input type="file" name="ProductPic" id="ProductPic" /></div>
+    <div> Product Name: <input type="text" value="@Model.Product.ProductName" id="ProductName" name="ProductName" /> </div>
+    <div>
+        Product Description:
+        <textarea id="ProductDescription" name="ProductDescription">@Model.Product.ProductDescription</textarea>
+    </div>
+    <div> Product Price: <input type="text" value="@Model.Product.ProductPrice" id="ProductPrice" name="ProductPrice" />$ </div>
+    <div>
+        <span>Product Brand: </span>
+        <select id="ProductBrandId" name="BrandId">
+            @foreach (var brands in Model.Brands)
+            {
+                var selected = "";
+                if (Model.Product.BrandId == brands.BrandId)
+                {
+                    selected = "selected";
+                }
+                <option value="@brands.BrandId" @selected>@brands.BrandName</option>
+            }
+        </select>
+    </div>
+
+    <div><input type="submit" value="Update Poduct" /></div>
+
+</form>

@@ -1,0 +1,16 @@
+﻿@model PassionProject.Models.Category
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<div>
+    <a href="/Category/List">Back to List</a>
+</div>
+
+<form method="post" action="/Category/Update/@Model.CategoryName">
+    <input type="text" id="CategoryName" name="CategoryName" value="@Model.CategoryName" />
+    <input type="submit" value="Update Category" />
+</form>
+

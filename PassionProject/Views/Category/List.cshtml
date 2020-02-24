@@ -1,0 +1,27 @@
+﻿@model List<PassionProject.Models.Category>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Category</h2>
+
+<div>
+    <a href="/Category/Add">Add New Category</a>
+</div>
+<form method="GET" action="/Category/List">
+    <input type="text" id="categorySearchKey" name="categorySearchKey" />
+    <input type="submit" value="Search" />
+</form>
+<div>
+    @{
+        foreach (var category in @Model)
+        {
+
+            <div>
+                <a href="/Category/Show/@category.CategoryId">@category.CategoryName</a>
+                <a href="/Category/Update/@category.CategoryId">Update</a>
+            </div>
+        }
+    }
+</div>
+

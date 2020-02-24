@@ -1,0 +1,57 @@
+﻿@model PassionProject.Models.ViewModels.ShowProduct
+@{
+    ViewBag.Title = "Show";
+}
+
+    <h2>Show</h2>
+
+<div>
+    <a href="/Product/List" style="padding-right:20%;">Back to List</a>
+    <a href="/Product/Update/@Model.product.ProductId" style="padding-right:20px;">Update</a>
+    <a href="/Product/Delete/@Model.product.ProductId">Delete</a><br/>
+</div><br/>
+<div>
+    <div>
+        <div>
+            @{
+                if (Model.product.HasPic == 1)
+                {
+                    <img src="../../Content/Products/@(Model.product.ProductId).@(Model.product.PicExtension)" alt="Image of @Model.product.ProductName" />
+                }
+            }
+        </div><br/>
+        <div>Name : @Model.product.ProductName</div>
+        <div>Description : @Model.product.ProductDescription</div>
+        <div>Price : @(Model.product.ProductPrice)$</div>
+        <div>Brand : @Model.product.Brands.BrandName</div>
+    </div><br/><br/>
+    <div>
+        <div>Categories: </div>
+        @{
+            foreach (var category in @Model.categories)
+            {
+                <div>
+                    <a href="/Category/Show/@category.CategoryId">@category.CategoryName</a>
+                   
+                    <a href="/Product/DetachCategory/@Model.product.ProductId?CategoryId=@category.CategoryId" style="padding-left:40px;">
+                        Remove Category
+                    </a>
+                </div>
+            }
+        }
+        <form method="post" action="/Product/AttachCategory/@Model.product.ProductId">
+            <select name="CategoryId" id="CategoryId">
+                @{
+
+                    foreach (var category in Model.all_categories)
+                    {
+                        <option value="@category.CategoryId">
+                            @category.CategoryName (@category.CategoryName)
+                        </option>
+                    }
+                }
+            </select>
+            <input type="submit" value="Add Category" />
+        </form>
+    </div>
+</div>
